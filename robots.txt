@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://waahu086-glitch.github.io/Emi-cal/sitemap.xml
