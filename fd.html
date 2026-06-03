@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FD Calculator</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.container {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    cursor: pointer;
+}
+
+.result {
+    margin-top: 20px;
+    font-size: 18px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Fixed Deposit (FD) Calculator</h1>
+
+    <label>Deposit Amount (₹)</label>
+    <input type="number" id="principal" placeholder="100000">
+
+    <label>Annual Interest Rate (%)</label>
+    <input type="number" id="rate" placeholder="7">
+
+    <label>Tenure (Years)</label>
+    <input type="number" id="years" placeholder="5">
+
+    <button onclick="calculateFD()">Calculate FD</button>
+
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+function calculateFD() {
+
+    let P = parseFloat(document.getElementById("principal").value);
+    let R = parseFloat(document.getElementById("rate").value);
+    let T = parseFloat(document.getElementById("years").value);
+
+    let maturityAmount = P * Math.pow((1 + (R / 100 / 4)), (4 * T));
+    let interestEarned = maturityAmount - P;
+
+    document.getElementById("result").innerHTML = `
+        <p><strong>Principal Amount:</strong> ₹${P.toFixed(2)}</p>
+        <p><strong>Interest Earned:</strong> ₹${interestEarned.toFixed(2)}</p>
+        <p><strong>Maturity Amount:</strong> ₹${maturityAmount.toFixed(2)}</p>
+    `;
+}
+</script>
+
+</body>
+</html>
